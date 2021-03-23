@@ -35,5 +35,10 @@ namespace TaoApi.Controllers
             })
             .ToArray();
         }
+        [HttpPost]
+        public void Post()
+        {
+            TaoApi.Models.TaoSaver.SaveTao();
+        }
     }
 }
