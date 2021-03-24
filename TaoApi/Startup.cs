@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaoApi
 {
@@ -32,6 +33,7 @@ namespace TaoApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaoApi", Version = "v1" });
             });
+            services.AddDbContext<TaoContext>(opt => opt.UseInMemoryDatabase("TaoInMemory"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

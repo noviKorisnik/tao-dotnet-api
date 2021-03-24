@@ -12,16 +12,36 @@ namespace TaoApi.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly TaoContext _context;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(
+            ILogger<WeatherForecastController> logger,
+            TaoContext context
+            )
         {
             _logger = logger;
+            _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("taos")]
         public object Taos()
         {
-            return true;
+            return _context.Taos;
+        }
+        [HttpGet("books")]
+        public object Books()
+        {
+            return _context.Books;
+        }
+        [HttpGet("chapters")]
+        public object Chapters()
+        {
+            return _context.Chapters;
+        }
+        [HttpGet("paragraphs")]
+        public object Paragraphs()
+        {
+            return _context.Paragraphs;
         }
     }
 }
