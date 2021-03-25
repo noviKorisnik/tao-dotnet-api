@@ -1,34 +1,25 @@
 [tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api)
 ___
-### snapshot003
-## cleaning
-With run of TaoSaver we got our copy of Tao, so we don't need to seek for it on the net... and with that also we don't require use of saver, parser and used library.
-```
-dotnet remove package HtmlAgilityPack
-```
-Also delete classes TaoSaver, TaoParser, and WeatherForecast. We'll keep WeatherForecastController for while, just for testing purposes (need to remove references to TaoSaver and WeatherForecast to avoid erros, yes).
-## add database
-This app can act as the real one if it would work with database, so we will add one.
-```
-dotnet add package Microsoft.EntityFrameworkCore.InMemory
-```
-That is some database package we can use now!
+### snapshot004
+## repository
+We added class **TaoRepository** to operate over database context. Since our example is rather simple and limited only to read operation from now on (we already put all data in database, no more changes), we are here with single repository which handles all model clases.
 
-The brand new class **TaoContext** will help us to communicate with database. It has defined datasets for our models.
+It has three get methods to retrieve class item with it's ancsestors and children (paragraphs are considered as primitives which have no meaning out of their chapter).
 
-And one extension is added, so we can fill database with data contained in json file. (... I have some doubts that the same can be done somehow better, but it appears that this works so far...)
+We also need to register repository in service collection, so class can be used for dependency injection. That is done in **Startup** class, method **_ConfigureServices_**, with added line:
+``` c#
+services.AddScoped<TaoRepository>();
+```
+## data transfer objects
+The new classes, parallel to our models, are introduced. Those are data transfer objects (DTO) with sole purpose to be used for data transfer, something that can easely serialized and that contains only those fields we want to expose to outer world.
 
-And, we need to add the following code in **Startup** class, it's method **_ConfigureServices_** so we can use our database context where we need it:
-```c#
-services.AddDbContext<TaoContext>(opt => opt.UseInMemoryDatabase("TaoInMemory"));
-```
-This works if we also has this using directive:
-```c#
-using Microsoft.EntityFrameworkCore;
-```
-## test it
-Now, WeatherForecastController is adapted to test our db collections. We use TaoContext with dependency injection, neat. And one get method per collection. Go, run and test it in swagger before we continue with the next snapshot...
+At this example, they are much look like their 'originals'... just to note they don't have to.
+## mapper
+The idea is that we get object from database and transform it to DTO. To ease the process, we introduce mapper, which can do assigning matching properties with less code.
+
+## service
+## controller
 ___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot002)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004) |
+| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot005) |
 | :-: | :-: | :-: |
 ___
