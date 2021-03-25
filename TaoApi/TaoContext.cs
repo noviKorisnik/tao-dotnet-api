@@ -21,6 +21,11 @@ namespace TaoApi
                 {
                     this.BootstrapTaoDb();
                     bootstrapped = true;
+                    //hm, this first call of context has the whole tree
+                    //and retruns it, well, let we throw an exception
+                    //it is only once
+                    //and yes, it probably can be avoided with safer bootstrap
+                    throw new System.Exception();
                 }
             }
         }

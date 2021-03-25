@@ -34,6 +34,9 @@ namespace TaoApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaoApi", Version = "v1" });
             });
             services.AddDbContext<TaoContext>(opt => opt.UseInMemoryDatabase("TaoInMemory"));
+            services.AddScoped<TaoRepository>();
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<TaoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
