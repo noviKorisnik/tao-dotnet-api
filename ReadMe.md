@@ -32,7 +32,7 @@ We need to register it also for dependency injection, the same place:
 services.AddScoped<TaoService>();
 ```
 ## controller
-Finally, we can rename our only controller to... **TaoController**
+Finally, we can rename our only controller to... **TaoController**. It now depends on service, and can provide data for Tao, Books and Chapters.
 ## test?
 All worked well, except... with the first run of test, path Tao, the whole Tao tree is retrieved, and that is not how it is intended to work. Therefore, not exactly as a fix, database bootstrap is changed to finish with exception, until safer database bootstrap method is applied.
 ___

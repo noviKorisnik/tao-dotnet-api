@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TaoApi.DataTransferObjects;
 
 namespace TaoApi.Controllers
 {
@@ -20,17 +21,17 @@ namespace TaoApi.Controllers
         }
 
         [HttpGet()]
-        public object GetTao()
+        public TaoDto GetTao()
         {
             return _service.GetTao();
         }
         [HttpGet("Book/{code}")]
-        public object GetBook(string code)
+        public BookDto GetBook(string code)
         {
             return _service.GetBook(code);
         }
         [HttpGet("Chapter/{code}")]
-        public object Chapters(string code)
+        public ChapterDto Chapters(string code)
         {
             return _service.GetChapter(code);
         }
