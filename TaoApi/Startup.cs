@@ -23,11 +23,10 @@ namespace TaoApi
         }
 
         public IConfiguration Configuration { get; }
-
+        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -37,11 +36,23 @@ namespace TaoApi
             services.AddScoped<TaoRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<TaoService>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000");
+                    });
+            });
+//            var nj = services.Where(s => s.ServiceType.Name == "TaoContext").Single();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+//var fffff = app.ApplicationServices.GetServices<TaoContext>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
