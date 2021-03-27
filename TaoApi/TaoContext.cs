@@ -7,53 +7,36 @@ namespace TaoApi
 {
     public class TaoContext : DbContext
     {
-        private static object locker = new object();
-        private static bool bootstrapped = false;
-        public bool IsBootstrapped()
-        {
-            return bootstrapped;
-        }
-        public TaoContext(DbContextOptions<TaoContext> options) : base(options)
-        {
-            lock (locker)
-            {
-                if (!bootstrapped)
-                {
-                    this.BootstrapTaoDb();
-                    bootstrapped = true;
-                    //hm, this first call of context has the whole tree
-                    //and retruns it, well, let we throw an exception
-                    //it is only once
-                    //and yes, it probably can be avoided with safer bootstrap
-                    throw new System.Exception();
-                }
-            }
-        }
+        public TaoContext(DbContextOptions<TaoContext> options) : base(options) { }
 
         public DbSet<Tao> Taos { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Paragraph> Paragraphs { get; set; }
-    }
-    public static class Extensions
-    {
+
         private static readonly string filename = "Tao.json";
-        public static void BootstrapTaoDb(this TaoContext context)
+        private static object locker = new object();
+        private static bool bootstrapped = false;
+        public void BootstrapTaoDb()
         {
-            if (!context.IsBootstrapped())
+            lock (locker)
             {
-                string filePath = Path.Combine(
-                    Directory.GetCurrentDirectory(),
-                    filename
-                );
-                string json = File.ReadAllText(filePath);
-                Tao tao = JsonSerializer.Deserialize<Tao>(json);
+                if (!bootstrapped)
+                {                   
+                    string filePath = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        filename
+                    );
+                    string json = File.ReadAllText(filePath);
+                    Tao tao = JsonSerializer.Deserialize<Tao>(json);
 
-                context.Taos.Add(tao);
+                    Taos.Add(tao);
 
-                context.SaveChanges();
+                    SaveChanges();
+
+                    bootstrapped = true;
+                }
             }
         }
     }
-
 }

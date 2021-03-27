@@ -21,19 +21,40 @@ namespace TaoApi.Controllers
         }
 
         [HttpGet()]
-        public TaoDto GetTao()
+        public ActionResult<TaoDto> GetTao()
         {
-            return _service.GetTao();
+            try
+            {
+                return _service.GetTao();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
         [HttpGet("Book/{code}")]
-        public BookDto GetBook(string code)
+        public ActionResult<BookDto> GetBook(string code)
         {
-            return _service.GetBook(code);
+            try
+            {
+                return _service.GetBook(code);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
         [HttpGet("Chapter/{code}")]
-        public ChapterDto Chapters(string code)
+        public ActionResult<ChapterDto> Chapters(string code)
         {
-            return _service.GetChapter(code);
+            try
+            {
+                return _service.GetChapter(code);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }

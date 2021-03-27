@@ -45,14 +45,11 @@ namespace TaoApi
                         builder.WithOrigins("http://localhost:3000");
                     });
             });
-//            var nj = services.Where(s => s.ServiceType.Name == "TaoContext").Single();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-//var fffff = app.ApplicationServices.GetServices<TaoContext>();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -70,6 +67,16 @@ namespace TaoApi
             {
                 endpoints.MapControllers();
             });
+
+            bootstrapDb();
+        }
+        private void bootstrapDb()
+        {
+            DbContextOptionsBuilder<TaoContext> builder =
+                new DbContextOptionsBuilder<TaoContext>();
+            builder.UseInMemoryDatabase("TaoInMemory");
+            TaoContext context = new TaoContext(builder.Options);
+            context.BootstrapTaoDb();
         }
     }
 }
