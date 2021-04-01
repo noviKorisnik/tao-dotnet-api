@@ -1,4 +1,4 @@
-[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api)
+[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api#readme)
 ___
 ### snapshot005
 ## cors
@@ -35,6 +35,6 @@ public ActionResult<TaoDto> GetTao()
 }
 ```
 ___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) |
+| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004#readme) | [Home](https://github.com/noviKorisnik/tao-dotnet-api#readme) |
 | :-: | :-: |
 ___
