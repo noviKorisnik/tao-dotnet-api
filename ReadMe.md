@@ -1,40 +1,13 @@
-[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api)
+# tao-dotnet-api
 ___
-### snapshot005
-## cors
-I hope we managed to provide some neat service. It would be nice if it could be used. Well, for some security concerns, default usage of service is restricted to the same domain where the service is hosted itself. So, if we want to provide additional usage, it could be done using cross-origin resource sharing (cors). The new definition goes again to Startup and it's ConfigureServices (there is added address of client which should use this service - another project, it will be linked somehow to this one). In pair with that in Configure method is needed that middleware layer UseCors is included, those layers should be stacked in specific order, cors goes after routing...
-## db bootstrap revisited
-Good, better db bootstrap has been found! This is added to Startup:
-``` c#
-private void bootstrapDb()
-{
-    DbContextOptionsBuilder<TaoContext> builder =
-        new DbContextOptionsBuilder<TaoContext>();
-    builder.UseInMemoryDatabase("TaoInMemory");
-    TaoContext context = new TaoContext(builder.Options);
-    context.BootstrapTaoDb();
-}
-```
-... and it is called at the end of Configure method, which is called at the end of application boot process.
+The goal of this project is to show several points from development of rest web api services. It is built around dotnet core technologies and is made using VS Code (probably would not be very different if other tool was used).
 
-TaoContext constructor does not have some silly code any more, and BootstrapTaoDb method is executed only once during startup proces, so if it fails, app will end... however, without data in database the whole app does not make any sense, so it sounds OK.
-## handling bad request
-Minor changes in controller - if something goes wrong, Bad request response is returned instead of ugly exception whatsoever... like this one:
-``` c#
-[HttpGet()]
-public ActionResult<TaoDto> GetTao()
-{
-    try
-    {
-        return _service.GetTao();
-    }
-    catch
-    {
-        return BadRequest();
-    }
-}
-```
-___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) |
-| :-: | :-: |
+At the end, service provides three endpoints for getting data for three different types of content. If we look at solution as a template, it can be used for serving structured texts, like publications.
+
+The project is presented here with snapshot branches of development process, with readme notes with each snapshot on key points for branch. Here:
+* [snapshot001](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot001) create project
+* [snapshot002](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot002) grab contents from net, parse it in data structure and save to json file
+* [snapshot003](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003) put data in database
+* [snapshot004](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004) build service pipeline, repository, mapper, service, controller
+* [snapshot005](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot005) something more
 ___
