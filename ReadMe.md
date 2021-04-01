@@ -1,4 +1,4 @@
-[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api)
+[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api#readme)
 ___
 ### snapshot004
 ## repository
@@ -36,6 +36,6 @@ Finally, we can rename our only controller to... **TaoController**. It now depen
 ## test?
 All worked well, except... with the first run of test, path Tao, the whole Tao tree is retrieved, and that is not how it is intended to work. Therefore, not exactly as a fix, database bootstrap is changed to finish with exception, until safer database bootstrap method is applied.
 ___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot005) |
+| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003#readme) | [Home](https://github.com/noviKorisnik/tao-dotnet-api#readme) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot005#readme) |
 | :-: | :-: | :-: |
 ___
