@@ -10,4 +10,7 @@ The project is presented here with snapshot branches of development process, wit
 * [snapshot003](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003#readme) put data in database
 * [snapshot004](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004#readme) build service pipeline, repository, mapper, service, controller
 * [snapshot005](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot005#readme) something more
+
+## what next
+[tao-react-client](https://github.com/noviKorisnik/tao-react-client#readme) is a react client which uses this api!
 ___
