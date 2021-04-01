@@ -1,4 +1,4 @@
-[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api)
+[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api#readme)
 ___
 ### snapshot002
 ## the tao of programming
@@ -21,6 +21,6 @@ dotnet run
 ```
 And... our api should be running, we can test it somehow, like to go on https://localhost:5001/swagger/index.html - that is swagger, just some cool tool to see what our api exposes and to test how it works - find post method of only controller, expand it, "Try it out" and "Execute" - what happened? Check for **Tao.json** file in project root folder, please.
 ___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot001)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003) |
+| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot001#readme) | [Home](https://github.com/noviKorisnik/tao-dotnet-api#readme) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot003#readme) |
 | :-: | :-: | :-: |
 ___
