@@ -1,4 +1,4 @@
-[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api)
+[tao-dotnet-api](https://github.com/noviKorisnik/tao-dotnet-api#readme)
 ___
 ### snapshot003
 ## cleaning
@@ -29,6 +29,6 @@ using Microsoft.EntityFrameworkCore;
 ## test it
 Now, WeatherForecastController is adapted to test our db collections. We use TaoContext with dependency injection, neat. And one get method per collection. Go, run and test it in swagger before we continue with the next snapshot...
 ___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot002)| [Home](https://github.com/noviKorisnik/tao-dotnet-api) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004) |
+| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot002#readme) | [Home](https://github.com/noviKorisnik/tao-dotnet-api#readme) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004#readme) |
 | :-: | :-: | :-: |
 ___
