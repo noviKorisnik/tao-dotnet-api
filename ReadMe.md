@@ -35,6 +35,6 @@ public ActionResult<TaoDto> GetTao()
 }
 ```
 ___
-| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004#readme) | [Home](https://github.com/noviKorisnik/tao-dotnet-api#readme) |
+| [Previous](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot004#readme) | [Home](https://github.com/noviKorisnik/tao-dotnet-api#readme) | [Next](https://github.com/noviKorisnik/tao-dotnet-api/tree/snapshot006#readme) |
 | :-: | :-: |
 ___
