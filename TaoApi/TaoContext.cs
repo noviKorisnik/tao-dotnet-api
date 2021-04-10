@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TaoApi.Models;
-using System.IO;
-using System.Text.Json;
 
 namespace TaoApi
 {
@@ -14,7 +12,6 @@ namespace TaoApi
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Paragraph> Paragraphs { get; set; }
 
-        private static readonly string filename = "Tao.json";
         private static object locker = new object();
         private static bool bootstrapped = false;
         public void BootstrapTaoDb()
@@ -23,12 +20,7 @@ namespace TaoApi
             {
                 if (!bootstrapped)
                 {                   
-                    string filePath = Path.Combine(
-                        Directory.GetCurrentDirectory(),
-                        filename
-                    );
-                    string json = File.ReadAllText(filePath);
-                    Tao tao = JsonSerializer.Deserialize<Tao>(json);
+                    Tao tao = TaoParser.GrabTao();
 
                     Taos.Add(tao);
 
